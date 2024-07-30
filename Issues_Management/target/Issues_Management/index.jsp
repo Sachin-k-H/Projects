@@ -10,8 +10,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body  style="background-image:url('/Issues_Management/res/aiimage.jpeg'); ">
-  <nav class="navbar navbar-expand-lg navbar-light bg-" style="background-color:#000000; ">
+<body  style="background-color: #f0f2f5; ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-" style="background-color: #000000;height:90px;">
       <div class="container-fluid">
           <a class="navbar-brand" href="#">
               <img src="/Issues_Management/res/xworkz.jpeg" alt="" width="100" height="90" style="border-radius: 20px;">

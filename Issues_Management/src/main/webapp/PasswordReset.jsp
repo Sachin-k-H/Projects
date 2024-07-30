@@ -68,7 +68,7 @@
                  <div class="card-body">
 
                       <form action="setpassword" method="post" id="signinForm">
-                      ${msg}
+                     <p style="color: green;">  ${msg}</p>
                        <span style="color:red">
                                            <c:forEach items="${errormsg}" var="obj">
                                            ${obj.defaultMessage}
@@ -81,7 +81,7 @@
                          </div>
                           <div class="form-group mb-3">
                                <label for="password">Password</label>
-                               <input type="text" class="form-control" id="password" name="password" value="${dto.password}" placeholder="Enter password">
+                               <input type="text" class="form-control" id="password" name="password"  placeholder="Enter password">
                                 <small class="error" id="passwordError"></small>
                           </div>
                            <div class="form-group mb-3">

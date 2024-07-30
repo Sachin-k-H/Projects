@@ -1,12 +1,15 @@
 package com.sachin.service;
 
+import java.beans.Encoder;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sachin.dto.Admin;
@@ -23,23 +26,25 @@ public class DtoServiceImpl implements DtoService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	public void RegisterUser(RegisterDto registerdto) {
-		
-     System.out.println(registerdto);
-    
-		repository.save(registerdto);
-		}
 
-	public void sendEmail(RegisterDto registerdto) {
+		System.out.println(registerdto);
+
+		repository.save(registerdto);
+	}
+
+	public void sendEmail(RegisterDto registerdto, String password) {
 		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 		simpleMailMessage.setTo(registerdto.getEmail());
 		simpleMailMessage.setSubject("Welcome Aboard!");
 		simpleMailMessage.setText("Dear " + registerdto.getFirstName() + " " + registerdto.getLastName() + "," + "\n"
 				+ " you have signnedup successfully into our Website." + "\n"
 				+ "To Further Assist you with Our services Please SignIn through this Temporary password and Set a New Password of your Convenience :"
-				+ "\n" + registerdto.getPassword() + "\n\n\n\n" + " Regards,\n" + " " + "X-workz Team");
+				+ "\n" + password + "\n\n\n\n" + " Regards,\n" + " " + "X-workz Team");
 		javaMailSender.send(simpleMailMessage);
 	}
 
@@ -47,14 +52,18 @@ public class DtoServiceImpl implements DtoService {
 
 		System.out.println("Saving data......");
 		String password = PasswordGenerator2.generatePassword();
-		registerdto.setPassword(password);
+		String encodedpassword = encoder.encode(password);
+		System.out.println(encodedpassword);
+		registerdto.setPassword(encodedpassword);
 		registerdto.setCreatedBy(registerdto.getFirstName());
 		registerdto.setCreatedDate(LocalDate.now());
 		registerdto.setCountLogin(0);
 		registerdto.setAccountLock(3);
-	RegisterDto	 emailispresent = repository.searchByEmail(registerdto.getEmail());
-	RegisterDto	 phoneispresent = repository.searchByPhone(registerdto.getPhone());
-		if (emailispresent!=null|| phoneispresent!=null) {
+		registerdto.setAccountStatus("Active");
+		registerdto.setProfileImage("icons8-user-24.PNG");
+		RegisterDto emailispresent = repository.searchByEmail(registerdto.getEmail());
+		RegisterDto phoneispresent = repository.searchByPhone(registerdto.getPhone());
+		if (emailispresent != null || phoneispresent != null) {
 			System.out.println("Mail or phone already registered");
 
 			return Optional.empty();
@@ -63,9 +72,9 @@ public class DtoServiceImpl implements DtoService {
 
 		else {
 			RegisterUser(registerdto);
-			
+
 			System.out.println("data is valid and saved");
-			sendEmail(registerdto);
+			sendEmail(registerdto, password);
 			System.out.println();
 			return Optional.ofNullable(registerdto);
 		}
@@ -74,11 +83,9 @@ public class DtoServiceImpl implements DtoService {
 
 	@Override
 	public RegisterDto getemailndpassword(String email, String pass) {
-		
+
 		return repository.searchbyemailandpassword(email, pass);
 	}
-
-	
 
 	@Override
 	public RegisterDto getuserbyid(RegisterDto registerdto) {
@@ -106,7 +113,7 @@ public class DtoServiceImpl implements DtoService {
 
 	@Override
 	public Admin getFirstemailpassword(String email, String pass) {
-		
+
 		return repository.findByEmailAndPassword(email, pass);
 	}
 
@@ -115,15 +122,15 @@ public class DtoServiceImpl implements DtoService {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
+
 	@Override
-public void deleteuser(int id) {
-	 repository.deleteById(id);
-}
+	public void deleteuser(int id) {
+		repository.deleteById(id);
+	}
+
 	@Override
 	public Admin getadminemail(String email) {
 		return repository.searchbyEmail(email);
 	}
- 
-	}
 
-
+}

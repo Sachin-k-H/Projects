@@ -16,7 +16,7 @@
         </style>
 </head>
 <body
-	style="background-image: url('/Issues_Management/res/aiimage.jpeg');">
+	style="background-color: #f0f2f5; ">
 	<nav class="navbar navbar-light bg-" style="background-color:#000000; ">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"> <img

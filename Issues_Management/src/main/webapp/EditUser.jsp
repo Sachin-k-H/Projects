@@ -36,14 +36,14 @@ function previewImage(event) {
 </head>
 
 <body style="background-color: #f0f2f5; ">
-<nav class="navbar navbar-light bg-" style="background-color:#000000; ">
+<!-- <nav class="navbar navbar-light bg-" style="background-color:#000000; ">
 		<div class="container-fluid">
 			 <img
 				src="/Issues_Management/res/xworkz.jpeg" alt="" width="100"
 				height="90" style="border-radius: 20px;">
 			
 			</div>
-			</nav>
+			</nav> -->
 
 	
 	<form class="col-md-4 reg_form" action="Update" method="post" modelAttribute="registerdto" enctype="multipart/form-data">
@@ -75,7 +75,7 @@ function previewImage(event) {
  <label for="file">Choose a profile image:</label>
       <div> <input type="file" id="file" name="file" accept="image/*" onchange="previewImage(event)">
        <br><br>
-        <img id="profileImagePreview" class="profile-image" src="#" alt="Profile Image Preview" style="display: none;" width=80 height=80>
+         <img id="profileImagePreview" class="profile-image" src="#" alt="Profile Image Preview" style="display: none;" width=80 height=80>
           <br><br>
        </div>  
 </div>

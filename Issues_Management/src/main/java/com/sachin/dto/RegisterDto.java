@@ -58,7 +58,7 @@ public class RegisterDto {
     private int accountLock;
     @Column(name = "profile_image")
     private String profileImage;
-    
+    private String accountStatus;
     
     
 	public int getId() {
@@ -122,10 +122,7 @@ public class RegisterDto {
 		this.updatedDate = updatedDate;
 	}
 
-	/*
-	 * public String getUserPassword() { return userPassword; } public void
-	 * setUserPassword(String userPassword) { this.userPassword = userPassword; }
-	 */
+	
 	public int getCountLogin() {
 		return countLogin;
 	}
@@ -143,15 +140,21 @@ public class RegisterDto {
 	public String toString() {
 		return "RegisterDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phone=" + phone + ", password=" + password + ", createdBy=" + createdBy + ", updatedBy="
-				+ updatedBy + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate
-				+ ", countLogin=" + countLogin + ", accountLock=" + accountLock + ", profileImage="
-				+ profileImage + "]";
+				+ updatedBy + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", countLogin="
+				+ countLogin + ", accountLock=" + accountLock + ", profileImage=" + profileImage + ", accountStatus="
+				+ accountStatus + "]";
 	}
 	public String getProfileImage() {
 		return profileImage;
 	}
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
+	}
+	public String getAccountStatus() {
+		return accountStatus;
+	}
+	public void setAccountStatus(String accountStatus) {
+		this.accountStatus = accountStatus;
 	}
 	
 

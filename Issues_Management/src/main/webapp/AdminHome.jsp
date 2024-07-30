@@ -12,24 +12,23 @@
 	rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-<!-- <link rel="stylesheet" href="/onlineShoppingApp/URLToResource/css/viewstyle.css"> -->
 </head>
 
 
 <body style="background-color: #f0f2f5;">
 	<!-- <h1>Registered Users</h1> -->
-	<nav class="navbar navbar-light bg-" style="background-color: #000000;">
+	<nav class="navbar navbar-light " style="background-color: #000000;height:80px;">
 		<div class="container-fluid">
-			<a class="navbar-brand"> <img
-				src="/Issues_Management/res/xworkz.jpeg" alt="" width="100"
-				height="90" style="border-radius: 20px;">
-			</a>
+			 <img
+				src="https://avatars.githubusercontent.com/u/48981565?v=4" alt="" width="100"
+				height="70" >
+			
 
 
 			<div class="dropdown">
 
 
-				<span style="color: white;">Hi, Admin ${admin.username}</span> <img
+				<span style="color: white;">Hi, ${Admin.username}</span> <img
 					src="/Issues_Management/res/download.png" id="profileimage"
 					alt="Profileimage" width="70" height="70"
 					style="border-radius: 40px; margin-right: 70px;" role="button"
@@ -38,8 +37,14 @@
 				<ul class="dropdown-menu">
 					<li><a class="dropdown-item" href="index.jsp"
 						style="color: Black;">Home</a></li>
-                    <li><a class="dropdown-item" href="viewst?p=ViewUsers" 
-						style="color: Black;">ViewUsers</a></li>
+                    <li><a class="dropdown-item" href="viewst" 
+						style="color: Black;">View All Users</a></li>
+						<li><a class="dropdown-item" href="viewallcomplaints" 
+						style="color: Black;">View All Complaints </a></li>
+						<li><a class="dropdown-item" href="RegisterDepartment.jsp" 
+						style="color: Black;">Add Department </a></li>
+						<li><a class="dropdown-item" href="RegisterDepartmentAdmin.jsp" 
+						style="color: Black;">Add Department Admin </a></li>
 				</ul>
 			</div>
 
@@ -48,9 +53,11 @@
 	</nav>
 
 	
-	<h2 style="color: black; font-weight: 800">${message}</h2>
+	<h2 style="color: black; font-weight: 400">${message}</h2>
 	  <div>
-            <%
+	  
+	<!--   view all users -->
+ <%--            <%
  if(request.getParameter("p")!=null)
  { 
    String p = request.getParameter("p");
@@ -60,7 +67,19 @@
 
 <% 
  }
-%>
+%> --%>
+<%-- <!-- view all complaints -->
+ <%
+ if(request.getParameter("a")!=null)
+ { 
+   String p = request.getParameter("a");
+%>    
+
+<%@include file="ViewAllComplaints.jsp" %>
+
+<% 
+ }
+%> --%>
 </div>
 </body>
 </html>

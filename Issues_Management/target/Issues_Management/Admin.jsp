@@ -15,9 +15,9 @@
             }
         </style>
 </head>
-<body>
+<body style="background-color: #f0f2f5; ">
     <nav class="navbar navbar-light bg-" style="background-color:#000000; ">
-        <div class="container" style="display: flex; flex-direction: row;">
+        
             <a class="navbar-brand" href="#">
                  <img src="/Issues_Management/res/xworkz.jpeg" alt="" width="100" height="90" style="border-radius: 20px;">
             </a>
@@ -26,18 +26,18 @@
             </div>
         </div>
     </nav>
-     <div class="container mt-5">
-             <div class="card style=width: 18rem;">
+     <div class="container mt-5 col-md-4">
+             <div class="card ;">
                  <div class="card-header">
                      Admin Login
                  </div>
                  <div class="card-body">
                      <form action="adminlogin" method="post" id="signinForm">
-                     ${msg}
+                     
                      <span style="color:red">
-                     <c:forEach items="${valid}" var="obj">
-                     ${obj.defaultMessage}
-                     </c:forEach>
+                     
+                     ${msg}
+                     
                      </span>
 
 

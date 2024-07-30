@@ -1,6 +1,7 @@
 package com.sachin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,11 @@ public class ForgotPasswordController {
 	  private Repository repository;
 	 @Autowired
 	 private ForgotPasswordServiceImpl forgotPasswordServiceImpl;
+	 @Autowired
+		private DtoServiceImpl dtoServiceImpl;
+	 
+	 @Autowired
+	 private PasswordEncoder encoder;
 	 
 	    public ForgotPasswordController()
 	    {
@@ -31,10 +37,14 @@ public class ForgotPasswordController {
 	        RegisterDto registerdto=repository.searchByEmail(email);
 	        if(registerdto!=null)
 	        {
-	            String password= PasswordGenerator2.generatePassword();
-	            registerdto.setPassword(password);
+	        	String password = PasswordGenerator2.generatePassword();
+	        	String encodedpassword	=encoder.encode(password);
+	        	System.out.println(encodedpassword);
+	        	registerdto.setPassword(encodedpassword);
 	           forgotPasswordServiceImpl.updatepassword(registerdto);
-	            System.out.println("new password sent to registered mail id");
+	           dtoServiceImpl.sendEmail(registerdto,password);
+	            System.out.println("new password sent to registered mail id"+password);
+	            model.addAttribute("msg","A Temporary password has been sent to registered mail id login with that password and reset New password");	      
 	            return "PasswordReset";
 
 	        }

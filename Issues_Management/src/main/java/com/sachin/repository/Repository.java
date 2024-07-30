@@ -49,4 +49,6 @@ public interface Repository extends JpaRepository<RegisterDto, Integer>{
 	@Query("select u from Admin u where u.email=:email")
 	Admin searchbyEmail(@Param("email") String email );
 	
+	
+	
 }

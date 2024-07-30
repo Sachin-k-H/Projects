@@ -22,6 +22,7 @@ Admin getFirstemailpassword(String email,String pass);
 List<RegisterDto> getAllRegistereduser();
 void deleteuser(int id);
 Admin getadminemail(String email) ;
+
 	
 }
 

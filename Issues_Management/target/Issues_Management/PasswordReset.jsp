@@ -48,7 +48,7 @@
     </script>
 </head>
 <body
-	style="background-image: url('/Issues_Management/res/aiimage.jpeg');">
+	style="background-color: #f0f2f5; ">
 	<nav class="navbar navbar-light bg-" style="background-color:#000000; ">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"> <img
@@ -68,7 +68,7 @@
                  <div class="card-body">
 
                       <form action="setpassword" method="post" id="signinForm">
-                      ${msg}
+                     <p style="color: green;">  ${msg}</p>
                        <span style="color:red">
                                            <c:forEach items="${errormsg}" var="obj">
                                            ${obj.defaultMessage}
@@ -76,24 +76,24 @@
                                            </span>
                          <div class="form-group mb-3">
                              <label for="email">Email</label>
-                             <input type="email" class="form-control" id="email" name="email"  ${action == 'retain' ? 'readonly' : ' '} value="${key}"  placeholder="Enter email">
+                             <input type="email" class="form-control" id="email" name="email"  ${action == 'retain' ? 'readonly' : ' '} value="${dto.email}"  placeholder="Enter email">
                              <small class="error" id="emailError"></small>
                          </div>
                           <div class="form-group mb-3">
                                <label for="password">Password</label>
-                               <input type="text" class="form-control" id="password" name="password" value="${dto.password}" placeholder="Enter password">
+                               <input type="text" class="form-control" id="password" name="password"  placeholder="Enter password">
                                 <small class="error" id="passwordError"></small>
                           </div>
                            <div class="form-group mb-3">
                             <label for="newpassword">New Password</label>
-                            <input type="text" class="form-control" id="newpassword" value="${dto.newpassword}" name="newpassword" placeholder="Enter password" onkeyup="validatePassword()">
+                            <input type="text" class="form-control" id="newpassword"  name="newpassword" placeholder="Enter password" onkeyup="validatePassword()">
                             <small class="error" id="passwordError"></small>
                              <p id="message"></p>
                             </div>
                              <div class="form-group mb-3">
                                <label for="confirmpassword">Confirm Password</label>
 
-                                <input type="text" class="form-control" id="confirmpassword" value="${dto.confirmpassword}" name="confirmpassword" placeholder="Enter password">
+                                <input type="text" class="form-control" id="confirmpassword"  name="confirmpassword" placeholder="Enter password">
                                   <small class="error" id="passwordError"></small>
                                    </div>
 

@@ -36,37 +36,38 @@ function previewImage(event) {
 </head>
 
 <body style="background-color: #f0f2f5; ">
-<nav class="navbar navbar-light bg-" style="background-color:#000000; ">
+<!-- <nav class="navbar navbar-light bg-" style="background-color:#000000; ">
 		<div class="container-fluid">
 			 <img
 				src="/Issues_Management/res/xworkz.jpeg" alt="" width="100"
 				height="90" style="border-radius: 20px;">
 			
 			</div>
-			</nav>
+			</nav> -->
 
 	
 	<form class="col-md-4 reg_form" action="Update" method="post" modelAttribute="registerdto" enctype="multipart/form-data">
 	<h1 >Edit User Details</h1>
 		<div>
 			<input class="form-control" type="hidden" name="id"
-				value="${edituser.id}">
-		</div>
+				value="${dto.id}">
+		</div> 
+		
 		<div>
 			<label>Email :</label> <input class="form-control" type="text"
-				name="email" value="${edituser.email}" readonly>
+				name="email" value="${dto.email}" readonly>
 		</div>
 		<div>
 			<label>FristName :</label> <input class="form-control" type="text"
-				name="firstName" value="${edituser.firstName}">
+				name="firstName" value="${dto.firstName}">
 		</div>
 		<div>
 			<label>LastName :</label> <input class="form-control" type="text"
-				name="lastName" value="${edituser.lastName}">
+				name="lastName" value="${dto.lastName}">
 		</div>
 		<div>
 			<label>Mobile :</label> <input class="form-control" type="text"
-				name="phone" value="${edituser.phone}">
+				name="phone" value="${dto.phone}" readonly>
 		</div>
 		<div>
 		
@@ -74,7 +75,7 @@ function previewImage(event) {
  <label for="file">Choose a profile image:</label>
       <div> <input type="file" id="file" name="file" accept="image/*" onchange="previewImage(event)">
        <br><br>
-        <img id="profileImagePreview" class="profile-image" src="#" alt="Profile Image Preview" style="display: none;" width=80 height=80>
+         <img id="profileImagePreview" class="profile-image" src="#" alt="Profile Image Preview" style="display: none;" width=80 height=80>
           <br><br>
        </div>  
 </div>

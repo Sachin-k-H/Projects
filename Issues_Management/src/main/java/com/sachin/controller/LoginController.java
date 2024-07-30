@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,21 +27,28 @@ public class LoginController {
 
 	@Autowired
 	private Repository repository;
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@PostMapping("/signindata")
-	public String Login(@ModelAttribute("RegisterDto") RegisterDto registerdto, Model model,
+	public String Login(@ModelAttribute("RegisterDto") RegisterDto registerdto, Model model,String password,
 			HttpServletRequest request) {
 		try {
 			RegisterDto count = repository.searchByEmail(registerdto.getEmail());
 
+            System.out.println("Account is:"+count.getAccountStatus());
+            System.out.println(password+"|||"+count.getPassword());
+            
+            if(count.getAccountStatus().equalsIgnoreCase("Active")) {
 			System.out.println("signing in......");
 
 			System.out.println(count.getCountLogin());
 
 			if (count.getCountLogin() == 0) {
 				System.out.println("Coming to login count 0....");
+				if(encoder.matches(password,count.getPassword())) {
 				RegisterDto useremailpass = dtoServiceImpl.getemailndpassword(registerdto.getEmail(),
-						registerdto.getPassword());
+						count.getPassword());
 
 				if (useremailpass != null) {
 					count.setAccountLock(3);
@@ -49,26 +56,15 @@ public class LoginController {
 					count.setCountLogin(1);
 					count.setUpdatedBy(count.getFirstName());
 					count.setUpdatedDate(LocalDate.now());
+					
 					repository.save(count);
 
 					Optional<RegisterDto> Optuser = repository.getbyemail(registerdto.getEmail());
 					HttpSession httpSession = request.getSession();
 					System.out.println(httpSession);
-					/*	httpSession.setAttribute("email", Optuser.get().getEmail());
-					
-					 * httpSession.setAttribute("firstName", Optuser.get().getFirstName());
-					 * httpSession.setAttribute("lastName", Optuser.get().getLastName());
-					 * httpSession.setAttribute("phone", Optuser.get().getPhone());
-					 * httpSession.setAttribute("action", "edit"); httpSession.setAttribute("image",
-					 * Optuser.get().getProfileImage()); httpSession.setAttribute("id",
-					 * Optuser.get().getId()); httpSession.setAttribute("userId",
-					 * Optuser.get().getId()); httpSession.setAttribute("accountLock",
-					 * Optuser.get().getAccountLock()); httpSession.setAttribute("countLogin",
-					 * Optuser.get().getCountLogin()); httpSession.setAttribute("password",
-					 * Optuser.get().getPassword());
-					 * 
-					 * httpSession.setAttribute("createdDate", Optuser.get().getCreatedDate());
-					 */
+					httpSession.setAttribute("user", Optuser.get());
+					System.out.println("user========>" + (RegisterDto) httpSession.getAttribute("user"));
+
 //		            set session for displaying image
 					String profileImageUrl = "/uploading/" + Optuser.get().getProfileImage();
 					System.out.println(profileImageUrl);
@@ -76,27 +72,27 @@ public class LoginController {
 
 					model.addAttribute("dto", Optuser.get());
 					model.addAttribute("message", "Login Successful, Welcome Back");
-
-					// model.addAttribute("msg", "Logged in succesfully");
-					// model.addAttribute("msg", "email and password valid");
 					model.addAttribute("action", "retain");
 					model.addAttribute("key", useremailpass.getEmail());
 
 					return "PasswordReset";
-				} else {
+				}
+				}else {
 
 					model.addAttribute("msg1", "Wrong email or password ");
 					return "Login";
 				}
 
+
 			}
+			
 
 			if (count.getCountLogin() >= 1) {
 
 				System.out.println("coming to login count 1..");
-
+				if(encoder.matches(password,count.getPassword())) {
 				RegisterDto useremailpass = repository.getEmailAndPass(registerdto.getEmail(),
-						registerdto.getPassword());
+						count.getPassword());
 				System.out.println(useremailpass);
 				if (useremailpass != null) {
 
@@ -107,35 +103,19 @@ public class LoginController {
 					Optional<RegisterDto> Optuser = repository.getbyemail(registerdto.getEmail());
 					HttpSession httpSession = request.getSession();
 					System.out.println(httpSession);
-					/*
-					 * httpSession.setAttribute("id", Optuser.get().getId());
-					 * httpSession.setAttribute("email", Optuser.get().getEmail());
-					 */
-					/*
-					 * httpSession.setAttribute("firstName", Optuser.get().getFirstName());
-					 * httpSession.setAttribute("lastName", Optuser.get().getLastName());
-					 * httpSession.setAttribute("phone", Optuser.get().getPhone());
-					 * httpSession.setAttribute("action", "edit"); httpSession.setAttribute("image",
-					 * Optuser.get().getProfileImage());
-					 * 
-					 * httpSession.setAttribute("userId", Optuser.get().getId());
-					 * httpSession.setAttribute("accountLock", Optuser.get().getAccountLock());
-					 * httpSession.setAttribute("countLogin", Optuser.get().getCountLogin());
-					 * httpSession.setAttribute("password", Optuser.get().getPassword());
-					 * 
-					 * httpSession.setAttribute("createdDate", Optuser.get().getCreatedDate());
-					 */
+					httpSession.setAttribute("user", Optuser.get());
+					System.out.println("user========>" + (RegisterDto) httpSession.getAttribute("user"));
+
 //		            set session for displaying image
 					String profileImageUrl = "/uploading/" + Optuser.get().getProfileImage();
 					System.out.println(profileImageUrl);
 					httpSession.setAttribute("profileImage", profileImageUrl);
 
 					model.addAttribute("dto", Optuser.get());
-				//	model.addAttribute("key1",Optuser.get().getId());
 					model.addAttribute("msg", "Login Successful, Welcome Back");
 
 					return "Home";
-				} else {
+				}} else {
 
 					model.addAttribute("msg1",
 							"Wrong email or password " + "u have " + (count.getAccountLock() - 1) + "attempts left");
@@ -158,6 +138,11 @@ public class LoginController {
 				}
 
 			}
+			}else {
+				model.addAttribute("msg1","Your Account is Inactive Please Contact Admin to Reactivate Your Account");
+				return "Login";
+				
+			}
 
 			return null;
 
@@ -169,3 +154,6 @@ public class LoginController {
 		}
 	}
 }
+
+	
+	

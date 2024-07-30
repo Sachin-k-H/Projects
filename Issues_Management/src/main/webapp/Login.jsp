@@ -46,6 +46,7 @@
 				<form action="signindata" method="post" id="signinForm" name="myformlogin"
 					onsubmit="return validate()">
 					<p style="color:red"> ${msg1} ${msg2}</p>
+					 <p style="color: green;">  ${msg}</p>
 					<%--  <span style="color:red">
                      <c:forEach items="${valid}" var="obj">
                      ${obj.defaultMessage}

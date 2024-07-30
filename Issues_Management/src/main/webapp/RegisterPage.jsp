@@ -75,7 +75,7 @@
 							to the terms and conditions</label>
 					</div>
 
-					<input type="submit" class="btn btn-primary" value="submit">
+					<input type="submit" class="btn btn-primary" value="submit" >
 <script src="/Issues_Management/res/Ajax.js"></script>
 
 				</form>

@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body  style="background-color: #f0f2f5; ">
-  <nav class="navbar navbar-expand-lg navbar-light bg-" style="background-color:#000000; ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-" style="background-color: #000000;height:90px;">
       <div class="container-fluid">
           <a class="navbar-brand" href="#">
               <img src="/Issues_Management/res/xworkz.jpeg" alt="" width="100" height="90" style="border-radius: 20px;">
@@ -30,6 +30,10 @@
                 <li class="nav-item"  >
                 <a class="navbar-brand" href="Admin.jsp" style="color: aliceblue;">Admin
 					Login</a></li>
+					<li class="nav-item"  >
+                <a class="navbar-brand" href="DepartmentAdminLogin.jsp" style="color: aliceblue;">Department Admin Login
+					</a></li>
+					
               </ul>
           </div>
       </div>

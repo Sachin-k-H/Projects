@@ -21,7 +21,7 @@
 
 </head>
 <body
-	style="background-image: url('/Issues_Management/res/aiimage.jpeg');">
+	style="background-color: #f0f2f5; ">
 	<nav class="navbar navbar-light bg-" style="background-color:#000000; ">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">  <img src="/Issues_Management/res/xworkz.jpeg" alt="" width="100" height="90" style="border-radius: 20px;">
@@ -75,7 +75,7 @@
 							to the terms and conditions</label>
 					</div>
 
-					<input type="submit" class="btn btn-primary" value="submit">
+					<input type="submit" class="btn btn-primary" value="submit" >
 <script src="/Issues_Management/res/Ajax.js"></script>
 
 				</form>
