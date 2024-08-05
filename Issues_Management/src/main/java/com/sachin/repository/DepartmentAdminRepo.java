@@ -1,5 +1,7 @@
 package com.sachin.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +18,8 @@ public interface DepartmentAdminRepo extends JpaRepository<DepartmentAdmin, Inte
 	DepartmentAdmin searchByPhone(@Param("phone") Long phone);
 	
 	@Query("select u from DepartmentAdmin u where u.email=:email and u.password=:password and u.department=:department")
-	DepartmentAdmin searchByEmailPassDept(@Param("email") String email ,@Param("password")String phone ,@Param("department")String department);
+	DepartmentAdmin searchByEmailPassDept(@Param("email") String email ,@Param("password")String password ,@Param("department")String department);
 
+	@Query("select u from DepartmentAdmin u where u.email=:email and u.password=:password")
+	Optional<DepartmentAdmin> searchByEmailPass(@Param("email") String email ,@Param("password")String password);
 }

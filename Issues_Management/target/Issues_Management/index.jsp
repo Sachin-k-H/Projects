@@ -30,6 +30,10 @@
                 <li class="nav-item"  >
                 <a class="navbar-brand" href="Admin.jsp" style="color: aliceblue;">Admin
 					Login</a></li>
+					<li class="nav-item"  >
+                <a class="navbar-brand" href="DepartmentAdminLogin.jsp" style="color: aliceblue;">Department Admin Login
+					</a></li>
+					
               </ul>
           </div>
       </div>

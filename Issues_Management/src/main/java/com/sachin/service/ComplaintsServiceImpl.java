@@ -1,6 +1,8 @@
 package com.sachin.service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -56,7 +58,9 @@ private ComplaintHistoryRepository comhisrepo;
 	@Override
 	public List<ComplaintsDto> getAllComplaintsBasedOnType(String type) {
 		// TODO Auto-generated method stub
-		return complaintsrepo.getComplaintstype(type);
+		return complaintsrepo.getComplaintstype(type).parallelStream()
+                .sorted(Comparator.comparing(ComplaintsDto::getId).reversed())
+                .collect(Collectors.toList());
 	}
 
 	@Override

@@ -60,7 +60,7 @@ public class DtoServiceImpl implements DtoService {
 		registerdto.setCountLogin(0);
 		registerdto.setAccountLock(3);
 		registerdto.setAccountStatus("Active");
-		registerdto.setProfileImage("icons8-user-24.PNG");
+		registerdto.setProfileImage("defaultimage.PNG");
 		RegisterDto emailispresent = repository.searchByEmail(registerdto.getEmail());
 		RegisterDto phoneispresent = repository.searchByPhone(registerdto.getPhone());
 		if (emailispresent != null || phoneispresent != null) {

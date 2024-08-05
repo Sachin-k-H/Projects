@@ -113,10 +113,7 @@
 								<option value="Unresolved">Unresolved</option>
 							</select>
 						</div></td>
-						<c:forEach var="list" items="${departmentlist}"> 
-						<c:choose>
 						
-						<c:when test="${(fn:length(list)!=0)||(fn:length(list)!=null)}">
 					<td scope="row"><div class="col-md" style="width: 110px;">
 							<select class="form-select " aria-label="department"
 								name="department" id="department">
@@ -136,10 +133,8 @@
 								</c:choose>
 							</select>
 						</div></td>
-						</c:when>
-						
-						</c:choose>
-</c:forEach> 
+					
+
 					<td scope="row"><a
 						href="changestatus?complaintid=${user.id}&&department=${user.department}"><input
 							type="submit" class="btn btn-primary" value="sumbit"></a></td>

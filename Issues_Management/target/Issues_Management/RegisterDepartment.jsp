@@ -32,7 +32,50 @@
 	padding: 20px;
 }
 </style>
+<script type="text/javascript">
 
+function setType(){
+	let name=document.getElementById("d_type");
+	let error=document.getElementById("typeError");
+	if(name.value.trim()==="Open this select menu" || name.value.length<3 || name.value.length>30){
+	error.innerHTML="Please enter a valid type";
+	error.style.color='red';
+	}
+	else{
+	error.innerHTML="";
+	}
+	
+	}
+
+
+
+function setAddress(){
+	let name=document.getElementById("address");
+	let error=document.getElementById("addressError");
+	if(name.value.trim()==="" || name.value.length<5 || name.value.length>30){
+	error.innerHTML="Please enter Address correctly minimum 5 character";
+	error.style.color='red';
+	}
+	else{
+	error.innerHTML="";
+	}
+	
+	}
+	
+function setCity(){
+	let name=document.getElementById("area");
+	let error=document.getElementById("areaError");
+
+	if(name.value.trim()==="Choose..." || name.value.trim()===""){
+	error.innerHTML="Please enter City correctly";
+	error.style.color='red';
+	}
+	else{
+	error.innerHTML="";
+	}
+	}
+
+</script>
 
 
 </head>
@@ -72,7 +115,7 @@
 
 		<h1 Style="font-weight: 400;">Register Department</h1>
 		<div class="col-md-4">
-			<p>Department</p>
+			<p>Department*</p>
 			<select class="form-select " aria-label="Department Type" name="d_type"
 				id="d_type" onblur="setType()" required>
 				<option selected>Open this select menu</option>
@@ -81,14 +124,18 @@
 				<option value="Sewage">Sewage</option>
 				<option value="Garbage">Garbage</option>
 				<option value="Road Block">Road Block</option>
+				<option value="Network">Network</option>
+				<option value="Police">Police</option>
+				<option value="Gasline">Gas-line</option>
+				
 			</select>
 			<p id="typeError"></p>
 		</div>
 		<div class="col-md-12">
-			<label for="inputArea" class="form-label">city</label> <input
+			<label for="inputArea" class="form-label">city*</label> <input
 				type="text" class="form-control" name="area" id="area"
-				placeholder="City" onblur="setArea()" required>
-				<p id="addressError"></p>
+				placeholder="City" onblur="setCity()" required>
+				<p id="areaError"></p>
 		</div>
 		<div class="col-md-12">
 			<label for="inputAddress" class="form-label">Address*</label> <input

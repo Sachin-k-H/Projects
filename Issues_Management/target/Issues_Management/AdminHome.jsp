@@ -43,6 +43,8 @@
 						style="color: Black;">View All Complaints </a></li>
 						<li><a class="dropdown-item" href="RegisterDepartment.jsp" 
 						style="color: Black;">Add Department </a></li>
+						<li><a class="dropdown-item" href="RegisterDepartmentAdmin.jsp" 
+						style="color: Black;">Add Department Admin </a></li>
 				</ul>
 			</div>
 
@@ -51,11 +53,11 @@
 	</nav>
 
 	
-	<h2 style="color: black; font-weight: 800">${message}</h2>
+	<h2 style="color: black; font-weight: 400">${message}</h2>
 	  <div>
 	  
 	<!--   view all users -->
-            <%
+ <%--            <%
  if(request.getParameter("p")!=null)
  { 
    String p = request.getParameter("p");
@@ -65,7 +67,7 @@
 
 <% 
  }
-%>
+%> --%>
 <%-- <!-- view all complaints -->
  <%
  if(request.getParameter("a")!=null)

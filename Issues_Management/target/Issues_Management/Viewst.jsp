@@ -57,7 +57,7 @@
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">First Name</th>
-				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
 			<!-- 	<th scope="col">Password</th> -->
 				<th scope="col">Email</th>
 				<th scope="col">Mobile</th>
@@ -66,7 +66,7 @@
 				<th scope="col">Updated By</th>
 				<th scope="col">Updated Date</th>
 				<th scope="col">Login Count</th>
-				<th scope="col">Account Lock</th>
+				<!-- <th scope="col">Account Lock</th> -->
 				<th scope="col">Profile Image</th>
 				<th scope="col" >Change Account Status</th>
 				<th scope="col">Delete User</th>
@@ -87,7 +87,7 @@
 				<td scope="row">${user.updatedBy}</td>
 				<td scope="row">${user.updatedDate}</td>
 				<td scope="row">${user.countLogin}</td>
-				<td scope="row">${user.accountLock}</td>
+			<%-- 	<td scope="row">${user.accountLock}</td> --%>
 				<td scope="row">${user.profileImage}</td>
 				<td scope="row"><div class="btn-group">
   <a href="setstatus?id=${user.id}" class="btn btn-primary " aria-current="page"   >${user.accountStatus}</a>

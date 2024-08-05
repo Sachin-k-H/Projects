@@ -36,19 +36,19 @@ public class DepartmentAdminServiceImpl implements DepartmentAdminService {
 		} else {
 
 			System.out.println("data is valid and saved");
-			sendEmail(departmentAdmin, password);
+			sendEmail1(departmentAdmin, password);
 			System.out.println(password);
 			return departmentadminrepo.save(departmentAdmin);
 		}
 
 	}
 
-	public void sendEmail(DepartmentAdmin departmentAdmin, String password) {
+	public void sendEmail1(DepartmentAdmin departmentAdmin, String password) {
 		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 		simpleMailMessage.setTo(departmentAdmin.getEmail());
 		simpleMailMessage.setSubject("Welcome Aboard!");
 		simpleMailMessage.setText("Hi ," +"\n" +"you have been Assigned as a DepartmentAdmin"
-				+ " below are your Acces Credentials" + "," + "\n"
+				+ " below are your Access Credentials" + "," + "\n"
 				+ " you can Login using these credentials into the Portal and Set a New Password of your Convenience."
 				+ "\n" + "\n" + password + "\n\n\n\n" + " Regards,\n" + " " + "X-workz Team");
 		javaMailSender.send(simpleMailMessage);
@@ -59,6 +59,7 @@ public class DepartmentAdminServiceImpl implements DepartmentAdminService {
 		DepartmentAdmin admindata = departmentadminrepo.searchByEmail(Admin.getEmail());
 		 String encodedpassword=admindata.getPassword();
 		if(encoder.matches(Admin.getPassword(), encodedpassword)) {
+			
 		return departmentadminrepo.searchByEmailPassDept(Admin.getEmail(), admindata.getPassword(), Admin.getDepartment());
 	}
 		System.out.println("Wrong credentials........");

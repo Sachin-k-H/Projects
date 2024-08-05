@@ -41,4 +41,31 @@ public class PasswordResetRepoImpl implements PasswordResetRepo {
 	        }
 	       return  false;
 	    }
+	    
+	    
+	    
+	    @Override
+	    public boolean updateDeptAdminPassword(PasswordResetDto passwordResetDto) {
+	        EntityManager entityManager= entityManagerFactory.createEntityManager();
+	        EntityTransaction entityTransaction= entityManager.getTransaction();
+	        try {
+	            entityTransaction.begin();
+	            Query query=entityManager.createQuery("update DepartmentAdmin set password=:pass where email=:email");
+	            query.setParameter("pass",passwordResetDto.getNewpassword());
+	            query.setParameter("email",passwordResetDto.getEmail());
+	            query.executeUpdate();
+	           entityTransaction.commit();
+	           return true;
+
+	        }
+	        catch (AcceptPendingException pendingException)
+	        {
+	            pendingException.printStackTrace();
+	            entityTransaction.rollback();
+	        }
+	        finally {
+	            entityManager.close();
+	        }
+	       return  false;
+	    }
 }

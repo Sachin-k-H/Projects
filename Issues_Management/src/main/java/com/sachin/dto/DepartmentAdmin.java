@@ -20,6 +20,7 @@ public class DepartmentAdmin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int da_id;
 	private String department;
+	private int department_id;
 	private String username;
 	private String password;
 	private String email;

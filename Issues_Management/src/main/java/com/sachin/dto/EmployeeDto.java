@@ -18,11 +18,13 @@ import lombok.NoArgsConstructor;
 public class EmployeeDto {
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "Emplyoee ID")
 	    private int e_id;
 
 	    @Column(name = "Department_ID")
 	    private int departmentId;
+	    
+	    @Column(name = "Department")
+	    private String department;
 
 	    @Column(name = "Name")
 	    private String name;

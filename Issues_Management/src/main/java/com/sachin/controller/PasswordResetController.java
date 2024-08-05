@@ -50,4 +50,38 @@ public class PasswordResetController {
 
 	    return "PasswordReset";
 	}
+	
+	
+	@PostMapping("/setdeptadminpassword")
+    public String deptadminpasswordRestController(@Valid PasswordResetDto passwordResetDto, BindingResult bindingResult, Model model)
+   {
+       if(bindingResult.hasErrors())
+       {
+           bindingResult.getAllErrors().forEach(objectError -> System.out.println(objectError.getDefaultMessage()));
+           model.addAttribute("errormsg",bindingResult.getAllErrors());
+           model.addAttribute("dto",passwordResetDto);
+       }
+      boolean result=passwordResetService.updateDeptAdminPassword(passwordResetDto);
+       if (result)
+       {
+           System.out.println(passwordResetDto);
+           System.out.println("password updated success fully");
+           model.addAttribute("msg","password updated success fully");
+
+           return "DepartmentAdminHome";
+       }
+       else {
+           System.out.println("password not updated success fully");
+           model.addAttribute("msg1","password not updated");
+
+       }
+
+
+    return "DepartmentAdminPasswordReset";
+}
+	
+	
+	
+	
+	
 }

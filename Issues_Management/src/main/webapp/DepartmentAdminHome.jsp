@@ -37,11 +37,11 @@
 				<ul class="dropdown-menu">
 					<li><a class="dropdown-item" href="index.jsp"
 						style="color: Black;">Home</a></li>
-						<li><a class="dropdown-item" href=""
+						<li><a class="dropdown-item" href="DepartmentAdminPasswordReset.jsp"
 						style="color: Black;">Reset Password</a></li>
-						<li><a class="dropdown-item" href=""
+						<li><a class="dropdown-item" href="registeremployee?department=${admindepartment}"
 						style="color: Black;">Add Employee</a></li>
-						<li><a class="dropdown-item" href="viewalldepartmentcomplaints?department=${admin.department}" 
+						<li><a class="dropdown-item" href="viewalldepartmentcomplaints?department=${admindepartment}" 
 						style="color: Black;">View All Complaints </a></li>
 						
 				</ul>
