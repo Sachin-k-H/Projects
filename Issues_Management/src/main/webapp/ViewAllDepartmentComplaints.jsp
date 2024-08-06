@@ -46,8 +46,8 @@
 					<li><a class="dropdown-item" href="index.jsp"
 						style="color: Black;">Home</a></li>
 					<li><a class="dropdown-item"
-						href="viewallcomplaints?a=ViewUsers" style="color: Black;">View
-							All Complaints </a></li>
+						href="viewalldepartmentcomplaints?department=${admindepartment}"
+						style="color: Black;">View All Complaints </a></li>
 				</ul>
 			</div>
 
@@ -57,7 +57,7 @@
 
 	<h2 style="color: red; font-weight: 800">${msg2}</h2>
 	<h2 style="color: black; font-weight: 800">${message}</h2>
-	
+
 
 	<table class="table  table-hover table-dark ">
 		<thead>
@@ -105,10 +105,10 @@
 								<option value="Unresolved">Unresolved</option>
 							</select>
 						</div></td>
-						<td scope="row"><div class="col-md" style="width: 110px;">
-							<select class="form-select " aria-label="employeeid" name="employeeid"
-								id="employeeid">
-								
+					<td scope="row"><div class="col-md" style="width: 110px;">
+							<select class="form-select " aria-label="employeeid"
+								name="employeeid" id="employeeid">
+
 								<c:forEach var="list" items="${employeelist}">
 									<c:if test="${list['e_id']==user['employeeid']}">
 										<option value="${list.name}">${list.name}</option>
@@ -122,16 +122,16 @@
 										</c:forEach>
 									</c:when>
 								</c:choose>
-								
-								
-								
-								
-								</select></div>
-								</td>
-								
-								
-								
-						
+
+
+
+
+							</select>
+						</div></td>
+
+
+
+
 					<%-- <td scope="row"><div class="col-md" style="width: 110px;">
 							<select class="form-select " aria-label="department"
 								name="department" id="department">
@@ -151,7 +151,7 @@
 								</c:choose>
 							</select>
 						</div></td> --%>
-					
+
 
 					<td scope="row"><a
 						href="changestatus?complaintid=${user.id}&&department=${user.department}"><input

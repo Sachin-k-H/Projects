@@ -83,7 +83,7 @@ public class DepartmentAdminController {
 	public ModelAndView registeredComplaints(@RequestParam("department") String department) {
 		System.out.println("viewing all complaints......");
 		ModelAndView mv = new ModelAndView();
-		List<EmployeeDto> allemployees = employeerepo.findAll();
+		List<EmployeeDto> allemployees = employeerepo.getEmployeeList(department);
 		//List<DepartmentDto> alldepartments= null;
 		List<ComplaintsDto> viewalldeptcomplaints = complaintsServiceImpl.getAllComplaintsBasedOnType(department);
 		//System.out.println(alldepartments);
@@ -132,7 +132,7 @@ public class DepartmentAdminController {
 	public String saveEmployeeRegisteration(@ModelAttribute("employeedto")EmployeeDto employeeDto ){
 		employeeserviceimpl.sendEmail2(employeeDto);
 		employeerepo.save(employeeDto);
-		return"";
+		return " ";
 	}
 	
 	@RequestMapping("/viewassingedcomplaints")

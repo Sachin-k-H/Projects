@@ -112,7 +112,7 @@
 		</div>
 		<div class="col-12">
 			<button type="submit" class="btn btn-primary" id="btn" >Create
-				Department</button>
+				DepartmentAdmin</button>
 		
 		</div>
 		<script src="/Issues_Management/res/Ajax.js"></script>
