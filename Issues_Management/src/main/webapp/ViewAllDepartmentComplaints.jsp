@@ -106,8 +106,26 @@
 							</select>
 						</div></td>
 						<td scope="row"><div class="col-md" style="width: 110px;">
-							<select class="form-select " aria-label="status" name="status"
-								id="status">
+							<select class="form-select " aria-label="employeeid" name="employeeid"
+								id="employeeid">
+								
+								<c:forEach var="list" items="${employeelist}">
+									<c:if test="${list['e_id']==user['employeeid']}">
+										<option value="${list.name}">${list.name}</option>
+									</c:if>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${fn:length(user.employeeid) == 0}">
+										<option selected>Allocate</option>
+										<c:forEach var="empl" items="${employeelist}">
+											<option value="${empl.e_id}">${empl.name}(ID:${empl.e_id})</option>
+										</c:forEach>
+									</c:when>
+								</c:choose>
+								
+								
+								
+								
 								</select></div>
 								</td>
 								

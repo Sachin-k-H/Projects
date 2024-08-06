@@ -5,6 +5,6 @@ import com.sachin.dto.EmployeeDto;
 public interface EmployeeService {
 	
 
-	void sendEmail(EmployeeDto employeedto);
+	void sendEmail2(EmployeeDto employeedto);
 
 }

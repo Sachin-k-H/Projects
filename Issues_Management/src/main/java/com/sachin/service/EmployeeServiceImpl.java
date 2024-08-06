@@ -12,12 +12,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private JavaMailSender javaMailSender;
 	
 	
-	public void sendEmail(EmployeeDto employeedto) {
+	public void sendEmail2(EmployeeDto employeedto) {
 		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 		simpleMailMessage.setTo(employeedto.getEmail());
 		simpleMailMessage.setSubject("Welcome Aboard!");
 		simpleMailMessage.setText("Hi ,"+employeedto.getName() +"\n" +"you have been Assigned to "+employeedto.getDepartment()
-				+ " below is your Login Email" + "," + "\n"
+		+"Department ."		+ " Below is your Login Email" + "," + "\n"
 				+ " you can Login using this Email and a OTP that is sent to you at time of Login ."
 				+ "\n" + "\n" +  "\n\n\n\n" + " Regards,\n" + " " + "X-workz Team");
 		javaMailSender.send(simpleMailMessage);
