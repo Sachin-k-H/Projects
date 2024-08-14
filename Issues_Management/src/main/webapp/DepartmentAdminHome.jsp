@@ -28,7 +28,7 @@
 			<div class="dropdown">
 
 
-				<span style="color: white;">Hi, ${Admin.username}</span> <img
+				<span style="color: white;">Hi, ${department.username}</span> <img
 					src="/Issues_Management/res/download.png" id="profileimage"
 					alt="Profileimage" width="70" height="70"
 					style="border-radius: 40px; margin-right: 70px;" role="button"
@@ -41,6 +41,8 @@
 						style="color: Black;">Reset Password</a></li>
 						<li><a class="dropdown-item" href="registeremployee?department=${admindepartment}"
 						style="color: Black;">Add Employee</a></li>
+						<li><a class="dropdown-item" href="viewalldepartmentemployees" 
+						style="color: Black;">View All Employees </a></li>
 						<li><a class="dropdown-item" href="viewalldepartmentcomplaints?department=${admindepartment}" 
 						style="color: Black;">View All Complaints </a></li>
 						

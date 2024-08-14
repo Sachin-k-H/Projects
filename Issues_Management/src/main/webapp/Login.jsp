@@ -61,7 +61,7 @@
 							id="emailError"></small>
 					</div>
 					<div class="form-group mb-3">
-						<label for="password">Password</label> <input type="text"
+						<label for="password">Password</label> <input type="password"
 							class="form-control" id="password" name="password"
 							placeholder="Enter password" autocomplete="off"> <small class="error"
 							id="passwordError"></small>

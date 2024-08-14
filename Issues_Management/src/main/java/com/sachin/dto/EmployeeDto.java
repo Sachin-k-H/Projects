@@ -40,5 +40,9 @@ public class EmployeeDto {
 
 	    @Column(name = "Password")
 	    private String password;
+	    
+	    @Column(name="EmployeeStatus")
+	    private String status;
 
+	    
 }

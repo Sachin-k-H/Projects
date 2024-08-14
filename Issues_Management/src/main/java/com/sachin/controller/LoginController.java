@@ -113,7 +113,6 @@ public class LoginController {
 
 					model.addAttribute("dto", Optuser.get());
 					model.addAttribute("msg", "Login Successful, Welcome Back");
-
 					return "Home";
 				}} else {
 

@@ -25,5 +25,6 @@ public class DepartmentAdmin {
 	private String password;
 	private String email;
 	private long phone;
+	private int accountLock;
 	
 }

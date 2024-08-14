@@ -14,4 +14,7 @@ List<ComplaintsDto> getAllComplaintsBasedOnCity(String city);
 List<ComplaintsDto> getAllComplaintsBasedOnTypeandCity(String type,String city);
 ComplaintsDto getComplaintid(int d);
 ComplaintsDto updateComplaint(ComplaintsDto compalintsdto) ;
+List<ComplaintsDto> getAllocatedComplaints(String departmentid);
+
+List<ComplaintsDto> getAllAssignedComplaints(int employeeid);
 }

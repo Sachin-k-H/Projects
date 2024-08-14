@@ -59,7 +59,7 @@ function Departmentvalidation(){
 		<div class="card style=width: 18rem;">
 			<div class="card-header">DepartmentAdmin Login</div>
 			<div class="card-body">
-				<form action="logindepartmentadmin" method="post" modelattribute="Admin">
+				<form action="logindepartmentadmin" method="post" modelattribute="admin">
 					<p style="color:red"> ${msg1} ${msg2}</p>
 					 <p style="color: green;">  ${msg}</p>
 					<%--  <span style="color:red">

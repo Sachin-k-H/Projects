@@ -36,7 +36,7 @@
 				height="70">
 
 			<div class="dropdown">
-				<span style="color: white;">Hi, ${Admin.username}</span> <img
+				<span style="color: white;">Hi, ${employeedto.name}</span> <img
 					src="/Issues_Management/res/download.png" id="profileimage"
 					alt="Profileimage" width="70" height="70"
 					style="border-radius: 40px; margin-right: 70px;" role="button"
@@ -45,9 +45,9 @@
 				<ul class="dropdown-menu">
 					<li><a class="dropdown-item" href="index.jsp"
 						style="color: Black;">Home</a></li>
-					<li><a class="dropdown-item"
+					<%-- <li><a class="dropdown-item"
 						href="viewalldepartmentcomplaints?department=${admindepartment}"
-						style="color: Black;">View All Complaints </a></li>
+						style="color: Black;">View All Complaints </a></li> --%>
 				</ul>
 			</div>
 
@@ -71,14 +71,15 @@
 				<th scope="col">City</th>
 				<th scope="col">Created By</th>
 				<th scope="col">Created Date</th>
-				<th scope="col">User Id</th>
+				<!-- <th scope="col">User Id</th> -->
 				<th scope="col">Complaint Status</th>
-				<th scope="col" colspan="1">Allocate Employee</th>
+				<th scope="col">Comments </th>
+				<!-- <th scope="col" colspan="1">Allocate Employee</th> -->
 				<th scope="col"></th>
-
-
 			</tr>
 		</thead>
+		
+		
 		<c:forEach var="user" items="${stulist}">
 			<form action="assignemployee" modelattribute="complaintsdto"
 				method="post">
@@ -93,7 +94,7 @@
 					<td scope="row">${user.city}</td>
 					<td scope="row">${user.createdBy}</td>
 					<td scope="row">${user.createdDateTime}</td>
-					<td scope="row">${user.userid}</td>
+				<%-- 	<td scope="row">${user.userid}</td> --%>
 
 					<td scope="row"><div class="col-md" style="width: 110px;">
 							<select class="form-select " aria-label="status" name="status"
@@ -105,6 +106,14 @@
 								<option value="Unresolved">Unresolved</option>
 							</select>
 						</div></td>
+						<td scope="row">
+						<div class="col-md-8">
+			
+			<textarea class="form-control" id="description" name="description"
+				rows="3"  onblur="setDescription()" required></textarea>
+				<p id="descriptionError"></p>
+		</div></td>
+					<%-- 
 					<td scope="row"><div class="col-md" style="width: 110px;">
 							<select class="form-select " aria-label="employeeid"
 								name="employeeid" id="employeeid">
@@ -128,29 +137,11 @@
 
 							</select>
 						</div></td>
+ --%>
 
 
 
-
-					<%-- <td scope="row"><div class="col-md" style="width: 110px;">
-							<select class="form-select " aria-label="department"
-								name="department" id="department">
-								
-								<c:forEach var="list" items="${departmentlist}">
-									<c:if test="${list['d_id']==user['department']}">
-										<option value="${list.d_type}">${list.d_type}</option>
-									</c:if>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${fn:length(user.department) == 0}">
-										<option selected>Allocate</option>
-										<c:forEach var="dept" items="${departmentlist}">
-											<option value="${dept.d_id}">${dept.d_type}(ID:${dept.d_id})</option>
-										</c:forEach>
-									</c:when>
-								</c:choose>
-							</select>
-						</div></td> --%>
+					
 
 
 					<td scope="row"><a

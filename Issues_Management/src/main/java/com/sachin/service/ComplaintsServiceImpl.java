@@ -12,26 +12,25 @@ import com.sachin.dto.ComplaintHistory;
 import com.sachin.dto.ComplaintsDto;
 import com.sachin.repository.ComplaintHistoryRepository;
 import com.sachin.repository.ComplaintsRepo;
+
 @Service
 public class ComplaintsServiceImpl implements ComplaintsService {
-	
-	
-@Autowired
+
+	@Autowired
 	private ComplaintsRepo complaintsrepo;
 
-@Autowired
-private ComplaintHistoryRepository comhisrepo;
+	@Autowired
+	private ComplaintHistoryRepository comhisrepo;
 
-	
 	@Override
 	public ComplaintsDto SaveComplaint(ComplaintsDto complaintsdto) {
-		
-	//	savecomplainthistory(complaintsdto);
-		return complaintsrepo.save(complaintsdto) ;
+
+		// savecomplainthistory(complaintsdto);
+		return complaintsrepo.save(complaintsdto);
 	}
 
 	public ComplaintHistory savecomplainthistory(ComplaintsDto complaintsdto) {
-		ComplaintHistory complainthistory=new ComplaintHistory();
+		ComplaintHistory complainthistory = new ComplaintHistory();
 		complainthistory.setCid(complaintsdto.getId());
 		complainthistory.setDescription(complaintsdto.getDescription());
 		complainthistory.setStatus(complaintsdto.getStatus());
@@ -39,10 +38,7 @@ private ComplaintHistoryRepository comhisrepo;
 		System.out.println(complainthistory);
 		return comhisrepo.save(complainthistory);
 	}
-	
-	
-	
-	
+
 	@Override
 	public List<ComplaintsDto> getuserid(int userid) {
 		// TODO Auto-generated method stub
@@ -58,9 +54,7 @@ private ComplaintHistoryRepository comhisrepo;
 	@Override
 	public List<ComplaintsDto> getAllComplaintsBasedOnType(String type) {
 		// TODO Auto-generated method stub
-		return complaintsrepo.getComplaintstype(type).parallelStream()
-                .sorted(Comparator.comparing(ComplaintsDto::getId).reversed())
-                .collect(Collectors.toList());
+		return complaintsrepo.getComplaintstype(type);
 	}
 
 	@Override
@@ -78,12 +72,24 @@ private ComplaintHistoryRepository comhisrepo;
 	@Override
 	public ComplaintsDto getComplaintid(int d) {
 		// TODO Auto-generated method stub
-		return complaintsrepo.findById(d).get() ;
-	}
-	@Override
-	public ComplaintsDto updateComplaint(ComplaintsDto compalintsdto) {
-		
-		return complaintsrepo.save(compalintsdto) ;
+		return complaintsrepo.findById(d).get();
 	}
 
+	@Override
+	public ComplaintsDto updateComplaint(ComplaintsDto compalintsdto) {
+
+		return complaintsrepo.save(compalintsdto);
+	}
+
+	@Override
+	public List<ComplaintsDto> getAllocatedComplaints(String departmentid) {
+
+		return complaintsrepo.getAllocatedComplaints(departmentid).parallelStream()
+				.sorted(Comparator.comparing(ComplaintsDto::getId).reversed()).collect(Collectors.toList());
+	}
+@Override
+	public List<ComplaintsDto> getAllAssignedComplaints(int employeeid){
+	return complaintsrepo.getAllAssignedComplaints(employeeid);	
+	}
+	
 }
